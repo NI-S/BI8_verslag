@@ -15,7 +15,7 @@ class Pfam:
         self.master.title("Choose protein")
         self.variable = StringVar(self.master)
         self.variable.set("Neuraminidase")  # default value
-        OptionMenu(self.master, self.variable, "Neuraminidase", "Hemagglutinin", "Porin_1", "META domain", "Thioredoxin").pack()
+        OptionMenu(self.master, self.variable, "Neuraminidase", "Haemagglutinin", "Porin_1", "META domain", "Thioredoxin").pack()
         Button(self.master, text="Confirm", command=self.__confirm__).pack(padx=5, side=RIGHT)
         Button(self.master, text="Close", command=self.__close__).pack(padx=5, side=RIGHT)
         self.master.mainloop()
@@ -36,6 +36,11 @@ class Pfam:
         elementen = self.driver.find_elements_by_class_name("rowNum")
         for i in range(len(elementen)):
             if i != 0:
+                if self.chosen_protein.__eq__("Porin_1"):
+                    if self.driver.find_element_by_xpath("//*[@id='resultTable']/tbody/tr[" + str(i) + "]/td[3]").text.__eq__(self.chosen_protein):
+                        self.driver.find_element_by_xpath(
+                            "//*[@id='resultTable']/tbody/tr[" + str(i) + "]/td[2]/a").send_keys("\n")
+                        break
                 if self.driver.find_element_by_xpath("//*[@id='resultTable']/tbody/tr["+str(i)+"]/td[4]").text.__eq__(self.chosen_protein):
                     self.driver.find_element_by_xpath("//*[@id='resultTable']/tbody/tr["+str(i)+"]/td[2]/a").send_keys("\n")
                     break
