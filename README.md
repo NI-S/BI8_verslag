@@ -7,3 +7,6 @@ Plak deze link: *chrome://settings/help* in je chrome zie figuur.<br/>
 De chrome versie voor dit project is 83.
 De chromedriver is dan ook voor versie 83.  
   
+Exe file is te vinden door:
+1. op mapje Code te klikken
+2. op mapje dist te klikken
