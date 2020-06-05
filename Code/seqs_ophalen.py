@@ -28,6 +28,7 @@ class Pfam:
         self.__pfam_search__()
 
     def __pfam_search__(self):
+        print(os.path.abspath("chromedriver.exe").replace("\\", "/"))
         self.driver = webdriver.Chrome(executable_path=os.path.abspath("chromedriver.exe").replace("\\", "/"))
         self.driver.get(self.site)
         self.driver.find_element_by_link_text("Keyword").click()
